@@ -261,7 +261,6 @@ fun PostMedia(mediaUrlsList: MutableList<MediaUrl>) {
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(10.dp)),
                 contentDescription = null)
-
         }
     }
 }

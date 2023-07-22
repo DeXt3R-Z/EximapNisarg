@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
@@ -38,7 +37,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.paging.ExperimentalPagingApi
 import com.example.eximap_nisarg.R
-import com.example.eximap_nisarg.repository.RepositoryTemp
 import com.example.eximap_nisarg.ui.theme.divider
 import com.example.eximap_nisarg.ui.theme.grey
 import com.example.eximap_nisarg.ui.theme.highlightBlue
@@ -75,7 +73,7 @@ fun ScreenHeadingWithBackIcon(navController: NavHostController)
 @Composable
 fun CommentsScreen(navController: NavHostController, viewModel: FeedScreenViewModel){
 
-    val commentsList = RepositoryTemp().getComments()
+    val randomComments = (0..8).random()
 
     val currentPostDetails by viewModel.commentPostState.collectAsState()
 
@@ -91,10 +89,10 @@ fun CommentsScreen(navController: NavHostController, viewModel: FeedScreenViewMo
             LazyColumn{
                 item {
                     MediaContent(size = currentPostDetails.mediaList.size, mediaUrl = currentPostDetails.mediaList )
-                    CommentsInfo(commentsList.size)
+                    CommentsInfo(randomComments)
                 }
 
-                items(items = commentsList){
+                items(randomComments){
                     IndividualComments(it)
                     Divider(color = divider, thickness = 2.dp)
                 }
@@ -240,13 +238,13 @@ fun LikeCommentSection()
 }
 
 @Composable
-fun IndividualComments(comment: String)
+fun IndividualComments(index: Int)
 {
     Column(modifier = Modifier
         .padding(start = 10.dp, top = 14.dp, end = 10.dp)
         .background(white)) {
         IndividualCommentsBanner()
-        Text(text = comment,
+        Text(text = "This is a comment $index from user $index, and is a dummy comment showed since there are very less comments available",
             fontFamily = poppins,
             fontWeight = FontWeight.SemiBold,
             fontSize = 14.sp,

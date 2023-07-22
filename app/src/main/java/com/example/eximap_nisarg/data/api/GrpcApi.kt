@@ -1,10 +1,7 @@
 package com.example.eximap_nisarg.data.api
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import com.example.eximap_nisarg.util.Constants.Companion.metadata
 import com.kotlang.social.GetFeedRequest
-import com.kotlang.social.GetPostRequest
 import com.kotlang.social.UserPostGrpc
 import com.kotlang.social.UserPostProto
 import io.grpc.ManagedChannel
